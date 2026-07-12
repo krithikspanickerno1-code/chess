@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Viking Chess — Black Client</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    html,body { height:100%; margin:0; }
+    body { font-family: Arial, Helvetica, sans-serif; background:#222; color:#eee; display:flex; justify-content:center; align-items:flex-start; padding:24px; }
+    #container { width:520px; display:block; text-align:center; }
+    #board-wrap { position:relative; margin:0 auto; }
+    canvas { background:#fff; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.6); display:block; margin:0 auto; }
+    #controls { margin-top:12px; display:flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap; }
+    button { padding:8px 12px; font-size:14px; cursor:pointer; border-radius:6px; border:0; background:#444; color:#fff; }
+    button:hover { filter:brightness(1.06); }
+    #status { margin-top:8px; font-size:13px; color:#ddd; }
+    #game-label { color:#ddd; margin-bottom:8px; font-weight:600; }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="game-label">Viking Chess — Black</div>
+    <div id="board-wrap">
+      <canvas id="chessboard" width="480" height="480"></canvas>
+    </div>
+
+    <div id="controls">
+      <button id="offer-draw">Offer Draw</button>
+      <button id="resign">Resign</button>
+      <button id="reset">Reset Game</button>
+      <button id="sync">Sync Now</button>
+    </div>
+
+    <div id="status">Ready. (Black client)</div>
+  </div>
+
+  <script src="blackcontrolroom.js"></script>
+</body>
+</html>
