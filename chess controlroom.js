@@ -116,6 +116,43 @@
 
   // Threefold repetition log
   let positionLog = new Map();
+  function createControls() {
+  const controls = document.createElement("div");
+  controls.className = "controls";
+
+  // Existing buttons you already had
+  const resetBtn = document.createElement("button");
+  resetBtn.textContent = "Reset";
+  resetBtn.addEventListener("click", resetBoard);
+  controls.appendChild(resetBtn);
+
+  const drawBtn = document.createElement("button");
+  drawBtn.textContent = "Offer Draw";
+  drawBtn.addEventListener("click", offerDraw);
+  controls.appendChild(drawBtn);
+
+  // NEW: explicit resign buttons
+  const whiteResignBtn = document.createElement("button");
+  whiteResignBtn.textContent = "Resign (White)";
+  whiteResignBtn.addEventListener("click", () => endGame("Black", "White resigns"));
+  controls.appendChild(whiteResignBtn);
+
+  const blackResignBtn = document.createElement("button");
+  blackResignBtn.textContent = "Resign (Black)";
+  blackResignBtn.addEventListener("click", () => endGame("White", "Black resigns"));
+  controls.appendChild(blackResignBtn);
+
+  document.body.appendChild(controls);
+}
+
+// Helper to mark game over
+function endGame(winner, reason) {
+  state.gameOver = true;
+  state.winner = winner;
+  state.reason = reason;
+  renderBoard();
+  updateStatus();
+}
 
   // Capture flag
   let captureFlag = false;
@@ -682,6 +719,7 @@
   }
 
   // --- Interaction ---
+  
   canvas.addEventListener("click", (e) => {
     if (gameOver) return;
     const rect = canvas.getBoundingClientRect();
