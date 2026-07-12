@@ -145,13 +145,22 @@
   document.body.appendChild(controls);
 }
 
-// Helper to mark game over
+    const whiteResignBtn = document.createElement("button");
+    whiteResignBtn.textContent = "Resign (White)";
+    whiteResignBtn.addEventListener("click", () => endGame("Black", "White resigns"));
+    controls.appendChild(whiteResignBtn);
+
+    const blackResignBtn = document.createElement("button");
+    blackResignBtn.textContent = "Resign (Black)";
+    blackResignBtn.addEventListener("click", () => endGame("White", "Black resigns"));
+    controls.appendChild(blackResignBtn);
+
 function endGame(winner, reason) {
-  state.gameOver = true;
-  state.winner = winner;
-  state.reason = reason;
-  renderBoard();
-  updateStatus();
+    state.gameOver = true;
+    state.winner = winner;
+    state.reason = reason;
+    renderBoard();
+    updateStatus();
 }
 
   // Capture flag
